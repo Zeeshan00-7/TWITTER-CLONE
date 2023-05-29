@@ -1,10 +1,10 @@
-import style from './signIn.module.css'
+import style from './signUp.module.css'
 import { BsTwitter } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
 import { AiFillApple } from "react-icons/ai";
  
 
-export default function SignIn(){
+export default function SignUP(){
     return(
        <div className={style.outer}>
         <div className={style.iconT}>

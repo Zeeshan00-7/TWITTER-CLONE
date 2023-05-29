@@ -1,11 +1,16 @@
-import logo from './logo.svg';
+
 import './App.css';
-import SignIn from './pages/signIn';
+import SignIn from './pages/SignIN/signIn';
+// import SignIn from './pages/SignIN/signIn';
+import SignUP from './pages/SignUP/signUp';
+
 
 function App() {
   return (
     <div >
-      <SignIn />   
+      
+     <SignIn/>
+       
     </div>
   );
 }
