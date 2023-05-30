@@ -7,7 +7,10 @@ import Home from './pages/Home/home';
 import SignUP from './pages/SignUP/signUp';
 
 
+
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import LoginForm from './pages/LoginForm/loginform';
+import ForgotPass from './pages/forgotPass/forgotPass';
 
 
 
@@ -23,7 +26,15 @@ const router = createBrowserRouter([
   {
     path: "/signup",
     element: <SignUP/>
-  }
+  },
+ {
+  path: "/loginform",
+  element: <LoginForm />
+ },
+ {
+  path: "/forgotPass",
+  element: <ForgotPass />
+ }
 
 ]);
 

@@ -15,7 +15,9 @@ const SignIn = () => {
   
   const [input,setInput] = useState('');
 
-
+  function forgotPass(){
+    navigate("/forgotPass")
+  } 
   
 
   const handleClick = () => {
@@ -45,7 +47,7 @@ const SignIn = () => {
         <div><TextField className={styles.outlinedInput} 
         label="Phone,email or username" variant="outlined" value={input} onChange={(e) => setInput(e.target.value)}/></div>
         <div className={styles.nextBtn} onClick={handleClick}><span>Next</span></div>
-        <div className={styles.password}><span>Forgot Password?</span></div>
+        <div className={styles.password} onClick={forgotPass}><span >Forgot Password?</span></div>
         <div className={styles.footer}><p>Don't have an account?<button onClick={() => navigate("/signup")}>Sign up</button></p></div>
 
     </div>
