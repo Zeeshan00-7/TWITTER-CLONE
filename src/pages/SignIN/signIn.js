@@ -59,15 +59,15 @@ const SignIn = () => {
         <p className={styles.p}>or</p>
         <div className={styles.underline_2}></div>
 
-        <div className={styles.outlinedInput}>
+        
           <TextField
-            id="outlined-basic"
+           className={styles.outlinedInput}
             label="Phone,email or username"
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            variant="outlined"
+            
           />
-        </div>
+ 
 
         <div className={styles.nextBtn} onClick={handleClick}>
           <span>Next</span>
