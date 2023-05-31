@@ -7,24 +7,26 @@ import { IoIosStats} from 'react-icons/io'
 import {LuShare} from 'react-icons/lu'
 import { useState } from 'react';
 
-export default function Card({name,username,des,img,userimg,id}){
+export default function Card({userProfile}){
+
+  const {name,username,desc,image,userimage,id} = userProfile;
     const[num, setNum] =useState(157)
     return(
         <div className={style.card}>
-            <header className={style.head}>
+            <header className={style.head} key={id}>
                 <div>
-                <Avatar alt="Travis Howard" src={img} />
+                <Avatar alt="Travis Howard" src={userimage}  />
                 </div>
                 <div>
                 <div className={style.user}>
                 <h3>{name}</h3> <p>{username}</p>
                 </div>
-                <p>{des}</p>
+                <p>{desc}</p>
                 </div>
             </header>
             
             <div className={style.img_container}>
-                <img src={img}/>
+                <img src={"https://images.pexels.com/photos/5384445/pexels-photo-5384445.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"} alt='postImage'/>
             </div>
             <footer className={style.icons}>
                   <div className={style.alignIcon}>

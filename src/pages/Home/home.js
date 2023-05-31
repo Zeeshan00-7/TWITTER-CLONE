@@ -3,12 +3,22 @@ import styles from './home.module.css'
 import Card from '../../molecules/home/Card'
 import Header from '../../molecules/home/header';
 import Tweet from '../../molecules/home/tweet';
-// import { useState } from 'react';
+import { useState,useEffect } from 'react';
+import axios from 'axios';
 
 import Trending from '../../molecules/Trending/trending';
 
 export default function Home(){
-  // const [input, setInput] = useState(" ");
+  const [userData, setUserData] = useState([]);
+
+  const fetchData = async () => {
+    const response = await axios.get("http://localhost:5000/user");
+    setUserData(response.data)
+  }
+
+  useEffect(() => {
+    fetchData()
+  },[])
   return(
     <div className={styles.outer}>
         <aside className={styles.nav}>
@@ -21,7 +31,14 @@ export default function Home(){
         <section className={styles.feed}>
             
             <Tweet/>
-            <Card />
+            {userData.map((person) => {
+              return (
+                <>
+                  <Card userProfile={person}/>
+                </>
+              )
+            })}
+           
         </section>
         </section>
          
