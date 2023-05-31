@@ -1,0 +1,53 @@
+.outer{
+    width: 26%;
+   height: 100%;
+}
+
+.searchInput {
+    position: sticky;
+    top: 0;
+ }
+ .searchInput span {
+     font-size: 1.2rem;
+     position: relative;
+     left: 2.2rem;
+     top: 0.3rem;
+     color: rgb(160, 157, 157);
+ }
+ .searchInput input {
+     width: 90%;
+     background-color: whitesmoke;
+     height: 2.8rem;
+     border-radius: 1.6rem;
+     margin-top: 0.5rem;
+     padding-left: 3rem;
+     
+ }
+ .trendingSection {
+     margin: auto;
+     margin-top: 1.2rem;
+     height: 80%;
+     width: 90%;
+     background-color: whitesmoke;
+     border-radius: 1.2rem;
+     overflow: scroll;
+ }
+ .trendingSection::-webkit-scrollbar{
+     display: none;
+ }
+ 
+ .trendingSection > h3 {
+     margin: 1rem 0 0 1.2rem;
+ }
+ .trendingTweets {
+     margin: 1.6rem 0 0 1.2rem;
+ }
+ .trendingTweets span {
+     font-size: 0.8rem;
+ }
+ .dotIcon {
+     font-size: 1.4rem;
+     position: relative;
+     left: 11.8rem;
+     top: 0.2rem;
+ }
