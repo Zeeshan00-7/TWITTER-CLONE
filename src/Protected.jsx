@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router';
 
 const Protected = (props) => {
-    const {Components} = props;
+    const {components} = props;
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -15,7 +15,7 @@ const Protected = (props) => {
 
   return (
     <>
-    <Components/>
+    <components/>
     </>
   )
 }
