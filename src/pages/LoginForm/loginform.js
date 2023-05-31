@@ -2,6 +2,7 @@ import  { useState } from 'react';
 import './loginform.css'
 import { RxCross2 } from "react-icons/rx";
 import { useNavigate } from 'react-router-dom';
+import { TextField } from '@mui/material';
 
 const LoginForm = () => {
  
@@ -9,6 +10,22 @@ const LoginForm = () => {
   const navigate = useNavigate()
   function backTo(){
     navigate('/signup')
+  }
+
+  function goToSignUp(){
+    localStorage.setItem('userData', JSON.stringify({
+      name: name,
+      email: email,
+      phone: phone,
+      dob:{
+        month: month,
+        date: date,
+        year: year
+      }
+
+    }))
+
+    navigate('/')
   }
 
 
@@ -62,36 +79,39 @@ const LoginForm = () => {
       <h1>Create your Twitter account</h1>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <input
-            type="text"
-            id="name"
-            placeholder='Name'
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
-          {!validateName(name)? <small>Please enter a valid name.</small> : ''}   
+           
+
+        <TextField id="outlined-basic" label="Name" variant="outlined" 
+         type="text"
+         value={name}
+         onChange={(e) => setName(e.target.value)}
+         required
+         sx={{width:"95%"}}
+        />
+        {!validateName(name)? <small>Please enter a valid name.</small> : ''}  
+
+            
           {/* we can change the condition according to our needs */}
         </div>
         <div className="form-group">
-          <input
+
+        <TextField id="outlined-basic" label="Phone" variant="outlined" 
             type="tel"
-            id="phone"
-            placeholder='Phone'
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
             required
+            sx={{width:"95%"}}
           />
           {!validatePhone(phone) && <small>Please enter a valid 10-digit phone number.</small>}
         </div>
         <div className="form-group">
-          <input
+
+        <TextField id="outlined-basic" label="email" variant="outlined" 
             type="email"
-            id="email"
-            placeholder='e-mail'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
+            sx={{width:"95%"}}
           />
           {!validateEmail(email) && <small>Please enter a valid email address.</small>}
         </div>
@@ -126,7 +146,7 @@ const LoginForm = () => {
           {!validateDate(`${month} ${date} ${year}`) && <small>Please enter a valid date of birth.</small>}
           
         </div>
-        <button type="submit" disabled={!isFormValid()}>
+        <button type="submit" disabled={!isFormValid()} onClick={goToSignUp}>
           Next
         </button>
       </form>

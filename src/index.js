@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Home from './pages/Home/home';
 import SignUP from './pages/SignUP/signUp';
+import Protected from './protected';
 
 
 
@@ -21,7 +22,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/home",
-    element: <Home/>
+    element: <Protected><Home/></Protected>
   },
   {
     path: "/signup",
