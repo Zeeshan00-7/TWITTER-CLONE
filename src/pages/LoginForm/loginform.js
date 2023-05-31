@@ -1,33 +1,45 @@
-import  { useState } from 'react';
-import './loginform.css'
+import { useState } from "react";
+import "./loginform.css";
 import { RxCross2 } from "react-icons/rx";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
- 
-
-  const navigate = useNavigate()
-  function backTo(){
-    navigate('/signup')
+  const navigate = useNavigate();
+  function backTo() {
+    navigate("/signup");
   }
 
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+  const [month, setMonth] = useState("");
+  const [date, setDate] = useState("");
+  const [year, setYear] = useState("");
 
-  const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
-  const [email, setEmail] = useState('');
-  const [month, setMonth] = useState('');
-  const [date, setDate] = useState('');
-  const [year, setYear] = useState('');
   const handleSubmit = (e) => {
     e.preventDefault();
+    localStorage.setItem(
+      "userData",
+      JSON.stringify({
+        name: name,
+        phone: phone,
+        email: email,
+        dob: {
+          month: month,
+          date: date,
+          year: year,
+        },
+      })
+    );
+    navigate("/");
   };
- 
+
   const validateName = (input) => {
     return input.trim().length > 0;
   };
 
   const validatePhone = (input) => {
-    const phoneRegex = /^\d{10}$/;
+    const phoneRegex = /^(\+\d{1,3}[- ]?)?\d{10}$/;
     return phoneRegex.test(input);
   };
 
@@ -50,55 +62,56 @@ const LoginForm = () => {
     );
   };
 
-
-  
-
   return (
-   
-     <div className="signup-container">
+    <div className="signup-container">
       <header className="head">
-             <RxCross2 onClick={backTo} className="cut"/> 
-      </header>   
+        <RxCross2 onClick={backTo} className="cut" />
+      </header>
       <h1>Create your Twitter account</h1>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <input
             type="text"
             id="name"
-            placeholder='Name'
+            placeholder="Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
           />
-          {!validateName(name)? <small>Please enter a valid name.</small> : ''}   
+          {!validateName(name) ? <small>Please enter a valid name.</small> : ""}
           {/* we can change the condition according to our needs */}
         </div>
         <div className="form-group">
           <input
             type="tel"
             id="phone"
-            placeholder='Phone'
+            placeholder="Phone"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
             required
           />
-          {!validatePhone(phone) && <small>Please enter a valid 10-digit phone number.</small>}
+          {!validatePhone(phone) && (
+            <small>Please enter a valid 10-digit phone number.</small>
+          )}
         </div>
         <div className="form-group">
           <input
             type="email"
             id="email"
-            placeholder='e-mail'
+            placeholder="e-mail"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-          {!validateEmail(email) && <small>Please enter a valid email address.</small>}
+          {!validateEmail(email) && (
+            <small>Please enter a valid email address.</small>
+          )}
         </div>
         <div className="form-group">
           <label>Date of Birth</label>
           <p className="dob-disclaimer">
-            This will not be shown publicly. Confirm your own age, even if this account is for a business, a pet, or something else.
+            This will not be shown publicly. Confirm your own age, even if this
+            account is for a business, a pet, or something else.
           </p>
           <div className="dob-group">
             <input
@@ -123,8 +136,9 @@ const LoginForm = () => {
               required
             />
           </div>
-          {!validateDate(`${month} ${date} ${year}`) && <small>Please enter a valid date of birth.</small>}
-          
+          {!validateDate(`${month} ${date} ${year}`) && (
+            <small>Please enter a valid date of birth.</small>
+          )}
         </div>
         <button type="submit" disabled={!isFormValid()}>
           Next
@@ -133,6 +147,5 @@ const LoginForm = () => {
     </div>
   );
 };
-
 
 export default LoginForm;

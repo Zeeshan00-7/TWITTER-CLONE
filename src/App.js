@@ -1,16 +1,10 @@
-
-import './App.css';
-import SignIn from './pages/SignIN/signIn';
-// import SignIn from './pages/SignIN/signIn';
-import SignUP from './pages/SignUP/signUp';
-
+import "./App.css";
+import SignIn from "./pages/SignIN/signIn";
 
 function App() {
   return (
-    <div >
-      
-     <SignIn/>
-       
+    <div>
+      <SignIn />
     </div>
   );
 }

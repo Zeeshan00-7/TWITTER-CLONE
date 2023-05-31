@@ -5,13 +5,10 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Home from './pages/Home/home';
 import SignUP from './pages/SignUP/signUp';
-
-
-
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LoginForm from './pages/LoginForm/loginform';
 import ForgotPass from './pages/forgotPass/forgotPass';
-
+import Protected from './Protected';
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 
 const router = createBrowserRouter([
@@ -21,12 +18,13 @@ const router = createBrowserRouter([
   },
   {
     path: "/home",
-    element: <Home/>
+    element: <Protected><Home/></Protected>
   },
   {
     path: "/signup",
     element: <SignUP/>
   },
+ 
  {
   path: "/loginform",
   element: <LoginForm />
