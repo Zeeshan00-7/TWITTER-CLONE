@@ -22,7 +22,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/home",
-    element: <Protected><Home/></Protected>
+    element:<Home/>,
   },
   {
     path: "/signup",
