@@ -1,8 +1,8 @@
 
 import './App.css';
 import SignIn from './pages/SignIN/signIn';
-// import SignIn from './pages/SignIN/signIn';
-import SignUP from './pages/SignUP/signUp';
+
+// import SignUP from './pages/SignUP/signUp';
 
 
 function App() {
