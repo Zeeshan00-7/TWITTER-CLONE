@@ -18,7 +18,7 @@ const SignIn = () => {
 
   const details = JSON.parse(localStorage.getItem("userData"));
   const handleClick = () => {
-    if (input === "") {
+    if (input.trim().length <= 0) {
       navigate("/");
     } else if (input === details.email || input === details.phone) {
       navigate("/home");
