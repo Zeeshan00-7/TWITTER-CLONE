@@ -1,0 +1,39 @@
+.card{
+    border: 1px solid grey;
+    height: 64%;
+}
+.head{
+    margin: 2%;
+    display: flex;
+    gap: 4%
+}
+.user{
+    display: flex;
+    flex-direction: row;
+    gap: 2%
+}
+.img_container{
+   width: 80%;
+   background-color: rgb(186, 184, 184);
+   height: 70%;
+   margin: auto;
+   border-radius: 15px;
+}
+.icons{
+    width: 85%;
+    margin: auto;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 20px;
+    color: rgb(94, 93, 93);
+}
+.alignIcon{
+    display: flex;
+    gap: 5px;
+}
+p{
+    font-size: 15px;
+}
