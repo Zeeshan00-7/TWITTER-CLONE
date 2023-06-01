@@ -9,13 +9,13 @@ import { useState } from 'react';
 
 export default function Card({userProfile}){
 
-  const {name,username,desc,image,userimage,id} = userProfile;
+  const {name,username,desc,image,userImage,id} = userProfile;
     const[num, setNum] =useState(157)
     return(
         <div className={style.card}>
             <header className={style.head} key={id}>
                 <div>
-                <Avatar alt="Travis Howard" src={userimage}  />
+                <Avatar alt="Travis Howard" src={image}  />
                 </div>
                 <div>
                 <div className={style.user}>
@@ -26,7 +26,7 @@ export default function Card({userProfile}){
             </header>
             
             <div className={style.img_container}>
-                <img src={"https://images.pexels.com/photos/5384445/pexels-photo-5384445.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"} alt='postImage'/>
+                <img src={userImage} alt='postImage'/>
             </div>
             <footer className={style.icons}>
                   <div className={style.alignIcon}>

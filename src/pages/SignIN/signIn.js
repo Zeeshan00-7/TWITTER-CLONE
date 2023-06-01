@@ -4,7 +4,7 @@ import {BsTwitter} from 'react-icons/bs';
 import {FcGoogle} from 'react-icons/fc';
 import {SiApple} from 'react-icons/si';
 import TextField from '@mui/material/TextField';
-import { Dialog,Button,DialogTitle,DialogContent,DialogContentText,DialogActions,Alert, AlertTitle } from '@mui/material';
+
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 

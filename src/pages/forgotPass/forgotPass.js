@@ -2,7 +2,6 @@ import style from './forgotPass.module.css'
 import { useState } from 'react';
 import { BsTwitter } from "react-icons/bs";
 import { RxCross2 } from "react-icons/rx";
-import { SiBackblaze } from 'react-icons/si';
 import { useNavigate } from 'react-router-dom';
 import TextField from '@mui/material/TextField';
 import { Button  } from '@mui/material';

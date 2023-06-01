@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function Protected(props){
-    const { component } =props;
+    const { Component } = props;
     const navigate = useNavigate()
     
     useEffect(()=>{
@@ -14,7 +14,7 @@ export default function Protected(props){
 
     return(
         <>
-        <component />
+        <Component />
         </>
     )
 

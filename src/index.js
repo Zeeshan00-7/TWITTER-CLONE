@@ -12,6 +12,7 @@ import Protected from './protected';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LoginForm from './pages/LoginForm/loginform';
 import ForgotPass from './pages/forgotPass/forgotPass';
+import  Component from './protected';
 
 
 
@@ -22,7 +23,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/home",
-    element:<Home/>,
+    element:<Protected>{Component = <Home/>}</Protected>,
   },
   {
     path: "/signup",
