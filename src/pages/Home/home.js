@@ -14,7 +14,7 @@ export default function Home(){
   const [userData, setUserData] = useState([]);
  
   const fetchData = async () => {
-    const response = await axios.get("http://localhost:5000/user");
+    const response = await axios.get("http://localhost:3000/user");
     setUserData(response.data)
   }
 

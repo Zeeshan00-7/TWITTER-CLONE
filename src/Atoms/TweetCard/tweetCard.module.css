@@ -1,0 +1,53 @@
+.card{
+    border: 1px solid rgb(216, 214, 214);
+    height: 500px;
+    width: 40vw;
+    min-height: 500px;
+}
+.head{
+    margin: 2%;
+    display: flex;
+    gap: 4%
+}
+.user{
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+   
+    gap: 2%
+}
+.img_container{
+   width: 80%;
+   background-color: rgb(186, 184, 184);
+   height: 70%;
+   margin: auto;
+   border-radius: 15px;
+}
+.img_container img {
+    height: 100%;
+    width: 100%;
+}
+.userImageContainer{
+    border: 1px solid black;
+    height: 45px;
+    width: 45px;
+    border-radius: 50px;
+}
+.icons{
+    width: 85%;
+    margin: auto;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 20px;
+    color: rgb(94, 93, 93);
+}
+.alignIcon{
+    display: flex;
+    gap: 5px;
+}
+p{
+    font-size: 15px;
+}
