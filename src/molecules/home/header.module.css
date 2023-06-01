@@ -5,7 +5,7 @@
     display: flex;
     flex-direction: column;
     gap: 40%;
-    
+    border: 1px rgb(202, 202, 202);
 }
 .name{
     margin-left: 20px;

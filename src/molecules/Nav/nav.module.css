@@ -1,0 +1,83 @@
+.container{
+    width: 20%;
+    position : fixed;
+    left : 0;
+    height : 100%;
+    border :1px solid #ffffff ;
+    margin-left: 6%;
+}
+
+
+.navbar{
+    list-style-type: none;
+    display: flex;
+    text-decoration: none;
+    color: #000;
+    padding: 10px  20px;
+}
+
+.bar{ 
+    list-style-type: none;
+}
+
+.bar2{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #000;
+    padding: 18px  35px;
+    font-weight: 100;
+    font-size: 18px ;
+}
+
+.bar2:hover{
+    background: #e8f5fe;
+
+}
+
+ .ancor{
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+    color: #000;
+    text-decoration: none;
+    
+} 
+
+.icons{
+    margin-right: 15px;
+    font-size: 25px;
+ }
+.bird{
+    color: #1da1f2;
+    font-size: 28px;
+}
+.home{
+    color: #1da1f2;
+    font-size: 28px;
+    text-decoration: none;
+    margin-right: 15px;
+    
+}
+.tweet {
+    display: block;
+      width: 65%;
+      margin: 0 35px;
+      padding: 15px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #fff;
+      background-color: #1da1f2;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+  }
+  button:hover {
+    background-color: #669fd8;
+  }
+  .changeAccount{
+    margin-top: 5%;
+    border:  1px solid black;
+    height: 6%;
+    width: 70%;
+  }
