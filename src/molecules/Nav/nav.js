@@ -1,10 +1,12 @@
 import React from 'react'
 import styles from './nav.module.css';
 import { FaTwitter, FaHome, FaHashtag, FaRegBell, FaRegEnvelope, FaRegBookmark, FaClipboardList, FaTwitterSquare, FaUserAlt, FaMehBlank} from "react-icons/fa";
-import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material'
+import  {Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material'
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import DialogBox from '../../Atoms/dialogBox';
+import { Avatar } from '@mui/material'
+
 
 const Navbar = () => {
     const navigate= useNavigate()
@@ -79,8 +81,10 @@ const Navbar = () => {
             
         </ul>
         <div className={styles.changeAccount}>
-            
+            <div className={styles.user}>
+            <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" />    
             <button className={styles.userChange} onClick={()=>setOpen(true)}>user account</button>
+            </div>
             <Dialog open={open} onClose={()=>setOpen(false)} sx={{width:"500px", height:"1100px"}}>
                 <DialogTitle></DialogTitle> 
                 <DialogContent>
