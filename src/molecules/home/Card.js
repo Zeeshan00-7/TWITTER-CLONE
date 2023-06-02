@@ -10,6 +10,13 @@ import { useState } from 'react';
 export default function Card({userProfile}){
 
   const {name,username,desc,image,userimage,id} = userProfile;
+
+  const [filled, setFilled] = useState(false);
+
+    const handleClick = () => {
+      setFilled(true);
+      setNum(num+1)
+    };
     const[num, setNum] =useState(157)
     return(
         <div className={style.card}>
@@ -31,26 +38,27 @@ export default function Card({userProfile}){
             <footer className={style.icons}>
                   <div className={style.alignIcon}>
                     <FaRegComment/> 
-                    <p>{num}</p>
+                    <p>157</p>
                   </div>
 
                   <div className={style.alignIcon}>
                   <RiShareForwardBoxFill/>
-                  <p>{num}</p>
+                  <p>3.3k</p>
                   </div>
 
                   <div className={style.alignIcon}>
-                    <AiOutlineHeart onClick={()=>{setNum(num+1)}}/>
+                    <AiOutlineHeart onClick={handleClick} style={{ 
+                      color: filled ? 'red' : 'grey' }} />
                     <p>{num}</p>
                   </div>
 
                   <div className={style.alignIcon}>
                     <IoIosStats/>
-                    <p>{num}</p>
+                    <p>90</p>
                   </div>
                   <div className={style.alignIcon}>
                     <LuShare/>
-                    <p>{num}</p>
+                    <p>78</p>
                   </div>
             </footer>
           

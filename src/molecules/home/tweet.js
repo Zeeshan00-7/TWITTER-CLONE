@@ -65,9 +65,13 @@ export default function Tweet(){
 
          <div>
          {
-                tweets.map((Tweet)=>(
+                tweets.map((Tweet)=>{
+                    return(
+                        <>
                   <TweetCard key={Tweet.id} user={Tweet}/> 
-                ))
+                  </>
+                    )
+                })
             }
          </div>
         </div>
