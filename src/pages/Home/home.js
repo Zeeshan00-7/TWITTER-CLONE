@@ -7,13 +7,14 @@ import { useState,useEffect } from 'react';
 import axios from 'axios';
 
 import Trending from '../../molecules/Trending/trending';
+import Navbar from '../../molecules/Nav/nav';
 import Follow from '../../molecules/Follow/follow';
 
 export default function Home(){
   const [userData, setUserData] = useState([]);
-
+ 
   const fetchData = async () => {
-    const response = await axios.get("http://localhost:4000/user");
+    const response = await axios.get("http://localhost:5000/user");
     setUserData(response.data)
   }
 
@@ -23,7 +24,7 @@ export default function Home(){
   return(
     <div className={styles.outer}>
         <aside className={styles.nav}>
-
+           <Navbar />
         </aside >
 
         <section className={styles.feed}>
@@ -47,7 +48,7 @@ export default function Home(){
 
         <aside className={styles.hashtag}>
            <Trending />
-            <Follow/> 
+           <Follow />
 
         </aside>
     </div>

@@ -15,18 +15,18 @@ export default function Card({userProfile}){
         <div className={style.card}>
             <header className={style.head} key={id}>
                 <div>
-                <Avatar alt="Travis Howard" src={image}  />
+                <div className={style.userImageContainer}><img src={userImage} alt='asdf'/></div>
                 </div>
-                <div>
+                < div>
                 <div className={style.user}>
-                <h3>{name}</h3> <p>{username}</p>
+                <h3>{name}</h3> <p>@{username}</p>
                 </div>
                 <p>{desc}</p>
                 </div>
             </header>
             
             <div className={style.img_container}>
-                <img src={userImage} alt='postImage'/>
+                <img src={image} alt='postImage'/>
             </div>
             <footer className={style.icons}>
                   <div className={style.alignIcon}>

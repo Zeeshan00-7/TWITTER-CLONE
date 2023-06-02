@@ -1,5 +1,6 @@
 .outer{
-    height: 18%;
+    height: 20%;
+    border: 1px solid rgb(215, 211, 211);
     
 }
 .input{
@@ -31,4 +32,10 @@
     flex-direction: row;
     justify-content: space-around;
     gap: 2px;
+}
+.tweetBtn{
+    width:100px;
+    height: 37px;
+    margin-left:150px;
+    margin-bottom: 20px ;
 }
