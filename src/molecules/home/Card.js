@@ -1,5 +1,5 @@
 import style from './Card.module.css'
-import { Avatar } from '@mui/material'
+// import { Avatar } from '@mui/material'
 import { FaRegComment} from 'react-icons/fa';
 import {RiShareForwardBoxFill} from 'react-icons/ri'
 import { AiOutlineHeart} from 'react-icons/ai';
