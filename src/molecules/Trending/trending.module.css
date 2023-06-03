@@ -51,3 +51,11 @@
      left: 11.8rem;
      top: 0.2rem;
  }
+ .box{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 300px;
+    height: 100px;
+ }

@@ -23,18 +23,23 @@ const SignIn = () => {
 
   const details = JSON.parse(localStorage.getItem("userData"));
   const handleClick = () => {
-    if (input.trim().length <= 0) {
-      navigate("/");
-    } else if (
-      input === details.email ||
-      input === details.phone ||
-      input === details.name
-    ) {
-      navigate("/home");
-    } else {
-      alert("Sorry, we couldn't found your account.");
-    }
-  };
+    // if (input.trim().length <= 0) {
+    //   navigate("/");}
+    // } else if (
+    //   input === details.email ||
+    //   input === details.phone ||
+    //   input === details.name
+    // ) {
+    //   navigate("/home");
+
+   
+       (input === details.name || input === details.email || input === details.phone ? navigate("/home") :
+        alert("sorry, we couldn't find your account")) 
+
+      
+      }
+    
+    
 
   return (
     <section className={styles.signUpSection}>

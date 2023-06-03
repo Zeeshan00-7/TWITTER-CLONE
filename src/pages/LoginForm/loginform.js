@@ -26,7 +26,14 @@ const LoginForm = () => {
     }))
 
     navigate('/')
-  }
+    // if(name === name || email === email || phone === phone ){
+    //   alert("You are alreadyregistred")
+    //   navigate("/")
+    // }
+  }  
+
+
+  
 
 
   const [name, setName] = useState('');
@@ -37,6 +44,7 @@ const LoginForm = () => {
   const [year, setYear] = useState('');
   const handleSubmit = (e) => {
     e.preventDefault();
+
   };
  
   const validateName = (input) => {

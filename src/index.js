@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Home from './pages/Home/home';
 import SignUP from './pages/SignUP/signUp';
-import Protected from './protected';
+// import Protected from './protected';
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LoginForm from './pages/LoginForm/loginform';

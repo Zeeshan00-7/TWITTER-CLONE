@@ -1,15 +1,11 @@
-import styles from "./trending.module.css";
-import { BiSearch, BiDotsHorizontalRounded } from "react-icons/bi";
-import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, TextField } from '@mui/material'
+import styles from './trending.module.css'
+import {BiSearch,BiDotsHorizontalRounded} from 'react-icons/bi';
+import {  Dialog } from '@mui/material'
+import { useState } from 'react';
 
-import { useState } from "react";
+export default function Trending(){
 
-export default function Trending() {
-
-
-  
   const[open, setOpen]=useState(false)
-
 
   const [trendingList, setTrendingList] = useState([
     {
@@ -62,6 +58,8 @@ export default function Trending() {
     },
   ]);
 
+
+
   const handleClick = (id) => {
     const newTrendingList = trendingList.filter((list) => list.id !== id)
     
@@ -82,25 +80,29 @@ export default function Trending() {
           {trendingList.map((trends) => {
             return (
               <>
-              <div key = {trends.id}className={styles.trendingTweets}>
+              <div key = {trends.id} className={styles.trendingTweets}>
               <span>{trends.place}</span>
               <BiDotsHorizontalRounded onClick={()=>setOpen(true)} className={styles.dotIcon}/>
-              <h5>{trends.trend}</h5>
+
+
+             <h5>{trends.trend}</h5>
               <span>{trends.tweet}</span> 
               </div>
               </>
             )
           })}
-
-<Dialog  open={open} onClose={()=> setOpen(false)} >
+        
+                <Dialog  open={open} onClose={()=>setOpen(false)} >
                 <div className={styles.box}>
-                  <p onClick={handleClick`$(trends.id)`} >not interested</p>
+                  <p onClick={() =>  handleClick()} >not interested</p>
                   <p>This post is harmful or spammy</p>
                 </div>
                    </Dialog>
-
+             
+        
+        
           
       </section>
-    </div>
-  );
+    </div>
+  );
 }

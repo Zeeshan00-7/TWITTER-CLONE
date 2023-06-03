@@ -18,9 +18,9 @@ export default function Tweet(){
     function postTweet(){
         let val =JSON.parse(localStorage.getItem('userData'))
 
-        axios.post("http://localhost:3001/user", {id: tweets.length+1, name: val.name, username: val.email, desc: text, image:"https://www.shutterstock.com/image-vector/no-image-available-icon-template-260nw-1036735678.jpg"})
+        axios.post(("http://localhost:3000/user"), {id: tweets.length+1, name: val.name, username: val.email, desc: text})
 
-        axios.get("http://localhost:3001/user").then((res)=> setTweets(res.data.reverse()))
+        axios.get("http://localhost:3000/user").then((res)=> setTweets(res.data.reverse()))
     }
     
 
@@ -30,14 +30,16 @@ export default function Tweet(){
                 const response = await fetch('http://localhost:3000/user');
                 const data = await response.json();
                 data.reverse();
+                console.log(data)
                 setTweets(data);
+                console.log(data)
             }
             catch(error){
                 console.error('Error occured:', error);
             }
     }; 
     fetchTweets();
-},tweets)
+},[tweets])
 
      
 
@@ -67,9 +69,13 @@ export default function Tweet(){
 
          <div>
          {
-                tweets.map((Tweet)=>(
+                tweets.map((Tweet)=>{
+                    return(
+                        <>
                   <TweetCard key={Tweet.id} user={Tweet}/> 
-                ))
+                  </>
+                    )
+                })
             }
          </div>
         <div> 
