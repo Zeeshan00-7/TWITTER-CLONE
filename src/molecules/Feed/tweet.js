@@ -35,6 +35,7 @@ export default function Tweet() {
   const handlePost = async () => {
     if (input.length !== 0) {
       let lData = JSON.parse(localStorage.getItem("userData"));
+      lData.reverse();
 
       axios.post("http://localhost:4004/users", {
         id: lData[0].id,

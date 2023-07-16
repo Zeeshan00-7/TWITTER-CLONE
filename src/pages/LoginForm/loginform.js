@@ -3,6 +3,7 @@ import "./loginform.css";
 import { RxCross2 } from "react-icons/rx";
 import { useNavigate } from "react-router-dom";
 import { TextField } from "@mui/material";
+import {v4 as uuid} from "uuid";
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -13,6 +14,7 @@ const LoginForm = () => {
   function goToSignUp() {
     // when click to the next this function will be invoked to store userData and navigate to sign in page
     let userData = {
+      id:uuid(),
       name: name,
       email: email,
       phone: phone,
@@ -27,14 +29,18 @@ const LoginForm = () => {
    if(data == null){
     data = []
     
-   } else if (data.find((item) => (phone === item.phone )))  {
+   } else if (data.find((item) => phone === item.phone || email === item.email))  {
     alert("You are already Registered")
-  }
-data.push(userData)
+    return;
+  } 
+  
+    data.push(userData)
     
     
     localStorage.setItem("userData", JSON.stringify(data))
     navigate("/");
+  
+
   }
 
   

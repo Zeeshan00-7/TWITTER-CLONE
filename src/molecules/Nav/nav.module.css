@@ -76,8 +76,8 @@
     background-color: #669fd8;
   }
  .userChange{
-    margin-top: 15px;
-    margin-right: 140px;
+    
+    margin-left: -92px;
     background-color: white;
     color: rgb(33, 156, 205);
     width: 100%;
@@ -89,8 +89,11 @@
  }
  .user{
     display: flex;
+    margin-top: 20px;
+    cursor: pointer;
+    
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    /* justify-content: center; */
  }
  

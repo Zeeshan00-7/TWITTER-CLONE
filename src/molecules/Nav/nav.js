@@ -11,10 +11,21 @@ import { Avatar } from '@mui/material'
 const Navbar = () => {
     const navigate= useNavigate()
 
-    function toSignIn(){
-        navigate('/')
-    }
     const [open, setOpen]=useState(false);
+    let ldata = JSON.parse(localStorage.getItem("userData"));
+   ldata.reverse();
+   
+
+   const handleLogout = (id) => {
+    alert('Do you want to log out ?')
+    let data = JSON.parse(localStorage.getItem("userData"));
+    let index = data.findIndex((item) => item.id === id);
+    data.splice(index,1);
+    localStorage.setItem("userData",JSON.stringify(data))
+    return navigate("/");
+    
+
+   }
   return (
     <div className={styles.container}>
         
@@ -81,9 +92,17 @@ const Navbar = () => {
             
         </ul>
         <div className={styles.changeAccount}>
-            <div className={styles.user}>
-            <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" />    
-            <button className={styles.userChange} onClick={()=>setOpen(true)}>user account</button>
+            <div onClick={()=>setOpen(true)} className={styles.user}>
+            {/* <Avatar
+          src="https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcQg0aZtQMCQ0ADZrwmRHXTsxNtYP1BGuhAMA7wXdQoPcaaTXubsWqhqb_MYnNBBMf-k-5_n1AN6GyoJCkE"
+          sx={{ height: "45px", width: "45px" }}
+        />
+            <button className={styles.userChange} onClick={()=>setOpen(true)}>{ldata[0].name}</button> */}
+             <Avatar src="https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcQg0aZtQMCQ0ADZrwmRHXTsxNtYP1BGuhAMA7wXdQoPcaaTXubsWqhqb_MYnNBBMf-k-5_n1AN6GyoJCkE" alt='followUserImg' sx={{marginLeft: "0.6rem", marginRight:"1.5rem", height: 48, width: 48}}/>
+        <div className={styles.text}>
+            <h5>{ldata[0].name}</h5>
+            <p>@{ldata[0].name}</p>
+        </div>
             </div>
             <Dialog open={open} onClose={()=>setOpen(false)} sx={{width:"500px", height:"1100px"}}>
                 <DialogTitle></DialogTitle> 
@@ -92,8 +111,8 @@ const Navbar = () => {
                 </DialogContent>
                 <DialogActions >
                     <div sx={{display:"flex", flexDirection:"column", alignItems:"flex-start"}}>
-                    <Button onClick={toSignIn}>Log out @username</Button>
-                    <Button onClick={toSignIn}>Add an existing account</Button>
+                    <Button onClick={() => handleLogout(`${ldata[0].id}`)}>Log out @{ldata[0].name}</Button>
+                    <Button onClick={() => navigate("/")}>Add an existing account</Button>
                     </div>
                 </DialogActions>
             </Dialog>
