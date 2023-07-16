@@ -19,26 +19,30 @@ export default function Tweet() {
   const [show, setShow] = useState(true);
 
   const fetchData = async () => {
-    const { data } = await axios.get("http://localhost:4004/users");
+    try {
+      const { data } = await axios.get("http://localhost:4006/users");
 
-    setData(data);
-  };
+      setData(data);
+    }
+    catch(error){
+      console.log(error.data)
+    }
+   
+  }
   useEffect(() => {
     fetchData();
   }, []);
 
   const handleInput = (value) => {
-    if (value.trim().length !== 0) {
-      setInput(value);
-    }
+    setInput(value);
   };
+  
   const handlePost = async () => {
-    if (input.length !== 0) {
-      let lData = JSON.parse(localStorage.getItem("userData"));
-      lData.reverse();
-
-      axios.post("http://localhost:4004/users", {
-        id: lData[0].id,
+    let lData = JSON.parse(localStorage.getItem("userData"));
+  lData.reverse();
+    try { 
+       await axios.post("http://localhost:4006/users", {
+        // id: lData[0].id,
         first_name: lData[0].name,
         last_name: lData[0].name.slice(0, 6),
         images:
@@ -48,14 +52,20 @@ export default function Tweet() {
         replyCount: 0,
         retweetsCount: 0,
         views: 1,
-      });
-      const { data } = await axios.get("http://localhost:4004/users");
-      data.reverse();
-      console.log(data);
-      setInput("");
-      setPost(data);
-      setShow(false);
+      })
+      
+    } catch(error) {
+      console.log(error)
     }
+ 
+   
+    const { data } = await axios.get("http://localhost:4006/users");
+    data.reverse();
+    console.log(data);
+    setInput("");
+    setPost(data);
+    setShow(false);
+  
   };
 
   const inputRef = useRef("null");
@@ -71,6 +81,7 @@ export default function Tweet() {
           onChange={(e) => handleInput(e.target.value)}
           className={style.input}
           placeholder="What is happening?!"
+          value={input}
         />
         <input ref={inputRef} type="file" style={{ display: "none" }} />
       </div>
