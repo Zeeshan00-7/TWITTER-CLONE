@@ -2,7 +2,7 @@
 import styles from './dialogBox.module.css'
 import { Dialog } from '@mui/material'
 import { useState } from 'react';
-import Tweet from '../molecules/home/tweet';
+import Tweet from '../molecules/Feed/tweet';
 
 
 export default function DialogBox(){
@@ -16,7 +16,7 @@ export default function DialogBox(){
               
                 
                    
-                    <Tweet style/>
+                    <Tweet />
                   
                    
                

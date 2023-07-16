@@ -1,26 +1,17 @@
 import React from 'react'
 import styles from './home.module.css'
-import Card from '../../molecules/home/Card'
-import Header from '../../molecules/home/header';
-import Tweet from '../../molecules/home/tweet';
-import { useState,useEffect } from 'react';
-import axios from 'axios';
+
+import Header from '../../molecules/Feed/header';
+import Tweet from '../../molecules/Feed/tweet';
+
 
 import Trending from '../../molecules/Trending/trending';
 import Navbar from '../../molecules/Nav/nav';
 import Follow from '../../molecules/Follow/follow';
 
-export default function Home(){
-  const [userData, setUserData] = useState([]);
- 
-  const fetchData = async () => {
-    const response = await axios.get("http://localhost:3000/user");
-    setUserData(response.data)
-  }
 
-  useEffect(() => {
-    fetchData()
-  },[])
+export default function Home(){
+
   return(
     <div className={styles.outer}>
         <aside className={styles.nav}>
@@ -31,17 +22,10 @@ export default function Home(){
             <header className={styles.header}>
                <Header /></header>
         <section className={styles.feed}>
+          <Tweet/>
             
-            <Tweet/>
-            {userData.map((person) => {
-              return (
-                <>
-                  <Card userProfile={person}/>
-                </>
-              )
-            })}
-
-            
+           
+          
            
         </section>
         </section>

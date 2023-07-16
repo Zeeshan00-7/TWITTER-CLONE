@@ -3,7 +3,7 @@ import styles from "./signIn.module.css";
 import { BsTwitter } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
 import { SiApple } from "react-icons/si";
-import TextField from "@mui/material/TextField";
+import { TextField } from "@mui/material";
 
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -21,25 +21,76 @@ const SignIn = () => {
     setInput(e.target.value);
   }
 
+  // const details = JSON.parse(localStorage.getItem("userData"));
+
+  // const handleClick = () => {
+
+  //   details.map((item) => item.phone === input? navigate("/home"): console.log(item.phone, "error"))
+
+  // }
+  //   const details = JSON.parse(localStorage.getItem("userData"));
+  // let alertShown = false;
+
+  // const handleClick = () => {
+  //   console.log(details)
+  //   if(details == null ){
+  //     if(!alertShown) {
+  //       alert("User Not Found");
+  //       alertShown = true;
+  //     }
+  //   } else {
+  //     details.map((item => input === item.phone ? navigate("/home"): alert("User not Found")))
+  //   }
+  // }
+  // const details = JSON.parse(localStorage.getItem("userData"));
+  // let alertShown = false;
+
+  // const handleClick = () => {
+  //   console.log(details)
+
+  //     if(!alertShown) {
+  //       alert("User Not Found");
+  //       setInput("")
+  //       alertShown = true;
+
+  //   } else {
+  //     const isPhoneMatched = details.some((item => input === item.phone));
+  //     if(isPhoneMatched) {
+  //       navigate("/home");
+  //      }
+  //      else {
+  //       if(!alertShown) {
+  //         alert("User not Found");
+  //         setInput("")
+  //         alertShown = true;
+  //       }
+  //     }
+  //   }
+  // }
+
   const details = JSON.parse(localStorage.getItem("userData"));
+  let alertShown = false;
+
   const handleClick = () => {
-    // if (input.trim().length <= 0) {
-    //   navigate("/");}
-    // } else if (
-    //   input === details.email ||
-    //   input === details.phone ||
-    //   input === details.name
-    // ) {
-    //   navigate("/home");
-
-   
-       (input === details.name || input === details.email || input === details.phone ? navigate("/home") :
-        alert("sorry, we couldn't find your account")) 
-
-      
+    if (details == null) {
+      if (!alertShown) {
+        alert("User Not Found");
+        setInput("");
+        alertShown = true;
       }
-    
-    
+    } else {
+      const isPhoneMatched = details.some((item) => input === item.phone);
+      if (isPhoneMatched) {
+        navigate("/home");
+      } else {
+        if (!alertShown) {
+          alert("User not Found");
+          setInput("");
+          alertShown = true;
+        }
+      }
+    }
+  };
 
   return (
     <section className={styles.signUpSection}>
@@ -72,13 +123,14 @@ const SignIn = () => {
         <p className={styles.p}>or</p>
         <div className={styles.underline_2}></div>
         <div>
-          <TextField
-            className={styles.outlinedInput}
-            label="Phone,email or username"
-            variant="outlined"
-            value={input}
-            onChange={handleChange}
+          <TextField 
+          sx={{width:"18.8vw"}}
+          label="Phone,email or username"
+          variant="outlined"
+          value={input}
+          onChange={handleChange}
           />
+        
         </div>
 
         <div className={styles.nextBtn} onClick={handleClick}>

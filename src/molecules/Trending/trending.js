@@ -1,11 +1,15 @@
 import styles from './trending.module.css'
-import {BiSearch,BiDotsHorizontalRounded} from 'react-icons/bi';
-import {  Dialog } from '@mui/material'
+import {BiSearch} from 'react-icons/bi';
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+
 import { useState } from 'react';
+import { Dialog, DialogContent, DialogContentText } from '@mui/material';
+
 
 export default function Trending(){
 
-  const[open, setOpen]=useState(false)
+  const[open, setOpen]=useState(false);
+
 
   const [trendingList, setTrendingList] = useState([
     {
@@ -61,7 +65,9 @@ export default function Trending(){
 
 
   const handleClick = (id) => {
-    const newTrendingList = trendingList.filter((list) => list.id !== id)
+    const newTrendingList = trendingList.reverse().filter((list) => id !== list.id)
+    setOpen(false)
+
     
     setTrendingList(newTrendingList)
   }
@@ -80,25 +86,43 @@ export default function Trending(){
           {trendingList.map((trends) => {
             return (
               <>
+              
               <div key = {trends.id} className={styles.trendingTweets}>
+             
+                <div>
               <span>{trends.place}</span>
-              <BiDotsHorizontalRounded onClick={()=>setOpen(true)} className={styles.dotIcon}/>
+             
 
 
              <h5>{trends.trend}</h5>
               <span>{trends.tweet}</span> 
               </div>
+              
+              <div>
+              <MoreHorizIcon  onClick={()=>setOpen(true)} className={styles.dotIcon}/>
+              </div>
+             
+              </div>
+            
+              <Dialog sx={{background: 'transparent'}} open={open} onClose={()=>setOpen(false)}>
+                <DialogContent>
+                  <DialogContentText>
+                  <div className={styles.box}>
+                  <p onClick={() => handleClick(trends.id)}>not interested</p>
+                  <p>This post is harmful or spammy</p>
+                </div>
+
+                  </DialogContentText>
+                </DialogContent>
+              </Dialog>
+              
+              
               </>
             )
           })}
         
-                <Dialog  open={open} onClose={()=>setOpen(false)} >
-                <div className={styles.box}>
-                  <p onClick={() =>  handleClick()} >not interested</p>
-                  <p>This post is harmful or spammy</p>
-                </div>
-                   </Dialog>
-             
+           
+              
         
         
           

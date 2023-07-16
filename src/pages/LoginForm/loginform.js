@@ -1,52 +1,54 @@
-import  { useState } from 'react';
-import './loginform.css'
+import { useState } from "react";
+import "./loginform.css";
 import { RxCross2 } from "react-icons/rx";
-import { useNavigate } from 'react-router-dom';
-import { TextField } from '@mui/material';
+import { useNavigate } from "react-router-dom";
+import { TextField } from "@mui/material";
 
 const LoginForm = () => {
- 
-
-  const navigate = useNavigate()
-  function backTo(){
-    navigate('/signup')
+  const navigate = useNavigate();
+  function backTo() {
+    navigate("/signup");
   }
 
-  function goToSignUp(){
-    localStorage.setItem('userData', JSON.stringify({
+  function goToSignUp() {
+    // when click to the next this function will be invoked to store userData and navigate to sign in page
+    let userData = {
       name: name,
       email: email,
       phone: phone,
-      dob:{
+      dob: {
         month: month,
         date: date,
-        year: year
+        year: year,
       }
-
-    }))
-
-    navigate('/')
-    // if(name === name || email === email || phone === phone ){
-    //   alert("You are alreadyregistred")
-    //   navigate("/")
-    // }
-  }  
-
+    };
+    
+   let  data = JSON.parse(localStorage.getItem("userData") )
+   if(data == null){
+    data = []
+    
+   } else if (data.find((item) => (phone === item.phone )))  {
+    alert("You are already Registered")
+  }
+data.push(userData)
+    
+    
+    localStorage.setItem("userData", JSON.stringify(data))
+    navigate("/");
+  }
 
   
 
-
-  const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
-  const [email, setEmail] = useState('');
-  const [month, setMonth] = useState('');
-  const [date, setDate] = useState('');
-  const [year, setYear] = useState('');
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+  const [month, setMonth] = useState("");
+  const [date, setDate] = useState("");
+  const [year, setYear] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
-
   };
- 
+
   const validateName = (input) => {
     return input.trim().length > 0;
   };
@@ -75,58 +77,63 @@ const LoginForm = () => {
     );
   };
 
-
-  
-
   return (
-   
-     <div className="signup-container">
+    <div className="signup-container">
       <header className="head">
-             <RxCross2 onClick={backTo} className="cut"/> 
-      </header>   
+        <RxCross2 onClick={backTo} className="cut" />
+      </header>
       <h1>Create your Twitter account</h1>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-           
+          <TextField
+            id="outlined-basic"
+            label="Name"
+            variant="outlined"
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+            sx={{ width: "95%" }}
+          />
+          {!validateName(name) ? <small>Please enter a valid name.</small> : ""}
 
-        <TextField id="outlined-basic" label="Name" variant="outlined" 
-         type="text"
-         value={name}
-         onChange={(e) => setName(e.target.value)}
-         required
-         sx={{width:"95%"}}
-        />
-        {!validateName(name)? <small>Please enter a valid name.</small> : ''}  
-
-            
           {/* we can change the condition according to our needs */}
         </div>
         <div className="form-group">
-
-        <TextField id="outlined-basic" label="Phone" variant="outlined" 
+          <TextField
+            id="outlined-basic"
+            label="Phone"
+            variant="outlined"
             type="tel"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
             required
-            sx={{width:"95%"}}
+            sx={{ width: "95%" }}
           />
-          {!validatePhone(phone) && <small>Please enter a valid 10-digit phone number.</small>}
+          {!validatePhone(phone) && (
+            <small>Please enter a valid 10-digit phone number.</small>
+          )}
         </div>
         <div className="form-group">
-
-        <TextField id="outlined-basic" label="email" variant="outlined" 
+          <TextField
+            id="outlined-basic"
+            label="email"
+            variant="outlined"
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            sx={{width:"95%"}}
+            sx={{ width: "95%" }}
           />
-          {!validateEmail(email) && <small>Please enter a valid email address.</small>}
+          {!validateEmail(email) && (
+            <small>Please enter a valid email address.</small>
+          )}
         </div>
         <div className="form-group">
           <label>Date of Birth</label>
           <p className="dob-disclaimer">
-            This will not be shown publicly. Confirm your own age, even if this account is for a business, a pet, or something else.
+            This will not be shown publicly. Confirm your own age, even if this
+            account is for a business, a pet, or something else.
           </p>
           <div className="dob-group">
             <input
@@ -151,8 +158,9 @@ const LoginForm = () => {
               required
             />
           </div>
-          {!validateDate(`${month} ${date} ${year}`) && <small>Please enter a valid date of birth.</small>}
-          
+          {!validateDate(`${month} ${date} ${year}`) && (
+            <small>Please enter a valid date of birth.</small>
+          )}
         </div>
         <button type="submit" disabled={!isFormValid()} onClick={goToSignUp}>
           Next
@@ -161,6 +169,5 @@ const LoginForm = () => {
     </div>
   );
 };
-
 
 export default LoginForm;

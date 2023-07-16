@@ -7,54 +7,56 @@ import { IoIosStats} from 'react-icons/io'
 import {LuShare} from 'react-icons/lu'
 import { useState } from 'react';
 
-export default function Card({userProfile}){
+export default function Card({user}){
 
-  const {name,username,desc,image,userImage,id} = userProfile;
-
+  
+const {first_name,last_name,id,caption,images,replyCount,retweetsCount,views} = user;
   const [filled, setFilled] = useState(false);
-
+const[likes,setLikes] = useState(685)
     const handleClick = () => {
-      setFilled(true);
-      setNum(num+1)
+      setFilled(!false); 
+      let initial = 685;
+      setLikes(initial === likes ? likes+1: initial)
     };
-    const[num, setNum] =useState(157)
+ 
+   
     return(
         <div className={style.card}>
             <header className={style.head} key={id}>
                 <div>
-                <div className={style.userImageContainer}><img src={userImage} alt='asdf'/></div>
+                <div className={style.userImageContainer}><img src={images} alt='asdf'/></div>
                 </div>
                 < div>
                 <div className={style.user}>
-                <h3>{name}</h3> <p>@{username}</p>
+                <h3>{first_name}</h3> <p>@{last_name}</p>
                 </div>
-                <p>{desc}</p>
+                <p>{caption}</p>
                 </div>
             </header>
             
             <div className={style.img_container}>
-                <img src={image} alt='postImage'/>
+                <img src={images} alt='postImage'/>
             </div>
             <footer className={style.icons}>
                   <div className={style.alignIcon}>
                     <FaRegComment/> 
-                    <p>157</p>
+                    <p>{replyCount}</p>
                   </div>
 
                   <div className={style.alignIcon}>
                   <RiShareForwardBoxFill/>
-                  <p>3.3k</p>
+                  <p>{retweetsCount}</p>
                   </div>
 
                   <div className={style.alignIcon}>
-                    <AiOutlineHeart onClick={handleClick} style={{ 
+                    <AiOutlineHeart onClick={() => handleClick()} style={{ 
                       color: filled ? 'red' : 'grey' }} />
-                    <p>{num}</p>
+                    <p>{likes}</p>
                   </div>
 
                   <div className={style.alignIcon}>
                     <IoIosStats/>
-                    <p>90</p>
+                    <p>{views}</p>
                   </div>
                   <div className={style.alignIcon}>
                     <LuShare/>
