@@ -1,15 +1,13 @@
-import styles from './trending.module.css'
-import {BiSearch} from 'react-icons/bi';
-import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+import styles from "./trending.module.css";
+import { BiSearch } from "react-icons/bi";
+import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 
-import { useState } from 'react';
-import { Dialog, DialogContent, DialogContentText } from '@mui/material';
+import { useState } from "react";
+import { Dialog, DialogContent, DialogContentText } from "@mui/material";
 
-
-export default function Trending(){
-
-  const[open, setOpen]=useState(false);
-
+export default function Trending() {
+  const [open, setOpen] = useState(false);
+  const [input, setInput] = useState("");
 
   const [trendingList, setTrendingList] = useState([
     {
@@ -62,71 +60,72 @@ export default function Trending(){
     },
   ]);
 
-
-
   const handleClick = (id) => {
-    const newTrendingList = trendingList.reverse().filter((list) => id !== list.id)
-    setOpen(false)
+    const newTrendingList = trendingList
+      .reverse()
+      .filter((list) => id !== list.id);
+    setOpen(false);
 
-    
-    setTrendingList(newTrendingList)
-  }
+    setTrendingList(newTrendingList);
+  };
+
+  const filteredData = trendingList.filter((item) => item.trend.toLowerCase().includes(input))
   return (
     <div>
       <div className={styles.searchInput}>
         <span>
           <BiSearch />
         </span>
-        <input type="search" placeholder="Search Twitter" />
+        <input
+          type="search"
+          value={input}
+          placeholder="Search Twitter"
+          onChange={(e) => setInput(e.target.value)}
+        />
       </div>
       <section className={styles.trendingSection}>
         <h3>What's happening</h3>
-        
-         
-          {trendingList.map((trends) => {
-            return (
-              <>
-              
-              <div key = {trends.id} className={styles.trendingTweets}>
-             
+
+        {filteredData.map((trends) => {
+          return (
+            <>
+              <div key={trends.id} className={styles.trendingTweets}>
                 <div>
-              <span>{trends.place}</span>
-             
+                  <span>{trends.place}</span>
 
-
-             <h5>{trends.trend}</h5>
-              <span>{trends.tweet}</span> 
-              </div>
-              
-              <div>
-              <MoreHorizIcon  onClick={()=>setOpen(true)} className={styles.dotIcon}/>
-              </div>
-             
-              </div>
-            
-              <Dialog sx={{background: 'transparent'}} open={open} onClose={()=>setOpen(false)}>
-                <DialogContent>
-                  <DialogContentText>
-                  <div className={styles.box}>
-                  <p onClick={() => handleClick(trends.id)}>not interested</p>
-                  <p>This post is harmful or spammy</p>
+                  <h5>{trends.trend}</h5>
+                  <span>{trends.tweet}</span>
                 </div>
 
+                <div>
+                  <MoreHorizIcon
+                    onClick={() => setOpen(true)}
+                    className={styles.dotIcon}
+                  />
+                </div>
+              </div>
+
+              <Dialog
+                sx={{ background: "transparent" }}
+                open={open}
+                onClose={() => setOpen(false)}
+              >
+                <DialogContent>
+                  <DialogContentText>
+                    <div className={styles.box}>
+                      <p onClick={() => handleClick(trends.id)}>
+                        not interested
+                      </p>
+                      <p>This post is harmful or spammy</p>
+                    </div>
                   </DialogContentText>
                 </DialogContent>
               </Dialog>
-              
-              
-              </>
-            )
-          })}
-        
-           
-              
-        
-        
-          
+            </>
+          );
+        })}
       </section>
-    </div>
-  );
+         
+    </div>
+  );
 }
