@@ -20,7 +20,7 @@ export default function Tweet() {
 
   const fetchData = async () => {
     try {
-      const { data } = await axios.get("http://localhost:4006/users");
+      const { data } = await axios.get("https://myjson-data.onrender.com/users");
 
       setData(data);
     }
@@ -41,7 +41,7 @@ export default function Tweet() {
     let lData = JSON.parse(localStorage.getItem("userData"));
   lData.reverse();
     try { 
-       await axios.post("http://localhost:4006/users", {
+       await axios.post("https://myjson-data.onrender.com/users", {
         // id: lData[0].id,
         first_name: lData[0].name,
         last_name: lData[0].name.slice(0, 6),
@@ -59,7 +59,7 @@ export default function Tweet() {
     }
  
    
-    const { data } = await axios.get("http://localhost:4006/users");
+    const { data } = await axios.get("https://myjson-data.onrender.com/users");
     data.reverse();
     console.log(data);
     setInput("");
