@@ -31,66 +31,67 @@ const Navbar = () => {
         
         <ul className={styles.bar}>
             <li className={styles.bar2}>
-                <a className= {styles.ancor} href='/bird'>
-                    <FaTwitter className={styles.bird}/></a>
+                <p className= {styles.ancor} >
+                    <FaTwitter className={styles.bird}/></p>
             </li >
             <li className={styles.bar2}>
-                <a className= {styles.ancor} href='/home'>
+                <p className= {styles.ancor} >
                     <FaHome className={styles.home}/>
                     Home
-                    </a>
+                    </p>
             </li>
             <li className={styles.bar2}>
-                <a className= {styles.ancor}href='/explore'>
+                <p className= {styles.ancor}>
                     <FaHashtag className={styles.icons}/>
                     Explore
-                    </a>
+                    </p>
             </li>
             <li className={styles.bar2}>
-                <a className= {styles.ancor} href='/notificatios'>
+                <p className= {styles.ancor} >
                     <FaRegBell className={styles.icons}/>
                     Notifications
-                    </a>
+                    </p>
             </li>
             <li className={styles.bar2}>
-                <a className= {styles.ancor}href='/messages'>
+                <p className= {styles.ancor}>
                     <FaRegEnvelope className={styles.icons}/>
                     Messages
-                    </a>
+                    </p>
             </li>
             <li className={styles.bar2}>
-                <a className= {styles.ancor}href='/bookmarks'>
+                <p className= {styles.ancor}>
                     <FaRegBookmark className={styles.icons}/>
                     Bookmarks
-                    </a>
+                    </p>
             </li>
             <li className={styles.bar2}>
-                <a className= {styles.ancor}href='/lists'>
+                <p className= {styles.ancor}>
                     <FaClipboardList className={styles.icons}/>
                     Lists
-                    </a>
+                    </p>
             </li>
             <li className={styles.bar2}>
-                <a className= {styles.ancor}href='/twitter'>
+                <p className= {styles.ancor}>
                     <FaTwitterSquare className={styles.icons}/>
                     Twitter Blue
-                    </a>
+                    </p>
             </li>
             <li className={styles.bar2}>
-                <a className= {styles.ancor}href='/profile'>
+                <p className= {styles.ancor}>
                     <FaUserAlt className={styles.icons}/>
                     Profile
-                    </a>
+                    </p>
             </li>
             <li className={styles.bar2}>
-                <a className= {styles.ancor}href='/more'>
+                <p className= {styles.ancor}>
                     <FaMehBlank className={styles.icons}/>
                     More
-                    </a>
+                    </p>
             </li>
-            <DialogBox />
+            
             
         </ul>
+        <DialogBox />
         <div className={styles.changeAccount}>
             <div onClick={()=>setOpen(true)} className={styles.user}>
             {/* <Avatar

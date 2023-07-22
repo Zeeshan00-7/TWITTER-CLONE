@@ -1,4 +1,5 @@
-.container{
+
+ .container{
     width: 20%;
     position : fixed;
     left : 0;
@@ -20,19 +21,24 @@
     list-style-type: none;
 }
 
+
 .bar2{
+    width: fit-content;
     display: flex;
     align-items: center;
     text-decoration: none;
     color: #000;
-    padding: 18px  35px;
-    font-weight: 100;
+    padding: 14px  35px;
+    margin: 3px;
+    font-weight: 300;
     font-size: 18px ;
+    border-radius: 40px;
+    
 }
 
 .bar2:hover{
-    background: #a6aeb3;
-    border-radius: 50px;
+    background: #b7b7b9;
+
 }
 
  .ancor{
@@ -41,6 +47,8 @@
     margin-right: 15px;
     color: #000;
     text-decoration: none;
+    font-size: 18px;
+    font-weight: 550;
     
 } 
 
@@ -51,9 +59,16 @@
 .bird{
     color: #1da1f2;
     font-size: 28px;
+    margin: 6px 6px 0 0;
+    
+}
+.bird:hover {
+    
+    background-color: #b7b7b9;
+
 }
 .home{
-    color: #1da1f2;
+    color: #0a0d0e;
     font-size: 28px;
     text-decoration: none;
     margin-right: 15px;
@@ -76,8 +91,8 @@
     background-color: #669fd8;
   }
  .userChange{
-    
-    margin-left: -92px;
+    margin-top: 15px;
+    margin-right: 140px;
     background-color: white;
     color: rgb(33, 156, 205);
     width: 100%;
@@ -89,11 +104,10 @@
  }
  .user{
     display: flex;
-    margin-top: 20px;
-    cursor: pointer;
-    
     flex-direction: row;
     align-items: center;
+    margin-top: 1.5rem;
+    cursor: pointer;
     /* justify-content: center; */
  }
  
